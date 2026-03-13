@@ -16,5 +16,5 @@ export default async function QuizPage() {
     redirect("/score-card");
   }
 
-  return <QuizClient userId={session.user.id} />;
+  return <QuizClient />;
 }

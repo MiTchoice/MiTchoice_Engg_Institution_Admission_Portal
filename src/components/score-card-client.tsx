@@ -170,7 +170,7 @@ export function ScoreCardClient({ student, score, eligibleBranches, admissionSta
         <p className="text-xs text-gray-400">
           Developed by <strong className="text-[#0D47A1]">{DEVELOPER.name}</strong> · {DEVELOPER.degree} · {DEVELOPER.institution}
         </p>
-        {admissionStatus !== "disqualified" && (
+        {(admissionStatus === "eligible" || admissionStatus === "bsc") && (
           <Link
             href="/branch-choice"
             className="flex items-center gap-2 px-6 py-3 bg-[#FFC107] text-gray-900 rounded-xl font-bold hover:bg-[#FFB300] transition-all hover:-translate-y-0.5 hover:shadow-lg"

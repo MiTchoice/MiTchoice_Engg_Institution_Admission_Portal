@@ -154,7 +154,7 @@ export function AdmissionLetterClient({ student }: Props) {
 
       <div className="flex items-center justify-between">
         <p className="text-center text-gray-400 text-sm">
-          This is a preview. Click "Download Admission Letter" for the printable version with QR code.
+          This is a preview. Click &quot;Download Admission Letter&quot; for the printable version with QR code.
         </p>
         <Link href="/dashboard" className="text-sm text-[#0D47A1] hover:underline">
           ← Dashboard

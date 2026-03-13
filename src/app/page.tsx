@@ -27,7 +27,7 @@ export default function HomePage() {
             <span className="text-[#FFC107]">Admissions 2025</span>
           </h1>
           <p className="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Join India's premier engineering institution. Attempt our online entrance test
+            Join India&apos;s premier engineering institution. Attempt our online entrance test
             and secure admission to your dream branch.
           </p>
         </div>

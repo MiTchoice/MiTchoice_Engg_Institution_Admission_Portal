@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [{ hostname: "localhost" }],
-  },
+  // Renamed in Next.js 14.1 — use both for compatibility
   experimental: {
     serverComponentsExternalPackages: ["bcryptjs", "@prisma/client", "prisma"],
   },
-  webpack: (config) => {
-    config.externals = [...(config.externals || []), "bcrypt"];
-    return config;
+  images: {
+    remotePatterns: [{ hostname: "localhost" }],
   },
 };
 

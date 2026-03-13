@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String        @id @default(cuid())
+  name          String
+  email         String        @unique
+  phone         String?
+  password      String
+  role          String        @default("STUDENT")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  quizSession   QuizSession?
+  branchChoice  BranchChoice?
+  admission     Admission?
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  text        String
+  optionA     String
+  optionB     String
+  optionC     String
+  optionD     String
+  correct     String
+  category    String
+  difficulty  String   @default("medium")
+  createdAt   DateTime @default(now())
+}
+
+model QuizSession {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionIds String
+  answers     String   @default("{}")
+  netScore    Float?
+  percentage  Float?
+  correct     Int?
+  incorrect   Int?
+  attempted   Int?
+  status      String   @default("IN_PROGRESS")
+  startedAt   DateTime @default(now())
+  submittedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BranchChoice {
+  id       String   @id @default(cuid())
+  userId   String   @unique
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branch   String
+  lockedAt DateTime @default(now())
+}
+
+model Admission {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dob          String
+  gender       String
+  address      String
+  tenthPercent Float
+  twelfthPercent Float
+  pcmPercent   Float
+  photoUrl     String?
+  marksheetUrl String?
+  submittedAt  DateTime @default(now())
+}
